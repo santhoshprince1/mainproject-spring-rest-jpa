@@ -21,5 +21,5 @@ private String mechanicsName;
 private int mechanicsAge;
 @Column(nullable=false,length=10)
 private String mechanicsMobile;
-private LocalDate joiningDate=LocalDate.now();
+private LocalDate joiningDate =LocalDate.now();
 }
