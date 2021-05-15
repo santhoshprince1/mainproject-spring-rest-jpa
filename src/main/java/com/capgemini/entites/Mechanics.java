@@ -14,12 +14,12 @@ import lombok.Data;
 public class Mechanics {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
-private int Mechanics_id;
+private int mechanicsId;
 @Column(nullable=false)
-private String Mechanics_name;
+private String mechanicsName;
 @Column(nullable=false)
-private int Mechanics_age;
+private int mechanicsAge;
 @Column(nullable=false,length=10)
-private String Mechanics_mobile;
-private LocalDate JoiningDate=LocalDate.now();
+private String mechanicsMobile;
+private LocalDate joiningDate=LocalDate.now();
 }

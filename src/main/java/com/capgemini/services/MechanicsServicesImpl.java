@@ -14,13 +14,13 @@ public class MechanicsServicesImpl  implements IMechanicsServices{
 	private MechanicsRepository mechanicsRepository;
 	@Override
 	public String createMechanic(Mechanics mechanics) throws MechanicsException {
-		if(mechanics.getMechanics_age()<18 && mechanics.getMechanics_age()>60) {
+		if(mechanics.getMechanicsAge()<18 && mechanics.getMechanicsAge()>60) {
 			throw new MechanicsException("Age is invalid");
 		}
-		if(!mechanics.getMechanics_mobile().matches("[6-9][0-9]{9}")) {
+		if(!mechanics.getMechanicsMobile().matches("[6-9][0-9]{9}")) {
 			throw new MechanicsException("mobile number is invalid");
 		}
-		if(!mechanics.getMechanics_name().matches("[A-Za-z ]+")) {
+		if(!mechanics.getMechanicsName().matches("[A-Za-z ]+")) {
 			throw new MechanicsException("name is invalid");
 		}
 		mechanicsRepository.save(mechanics);
@@ -29,29 +29,29 @@ public class MechanicsServicesImpl  implements IMechanicsServices{
 
 	@Override
 	public String updateMechanic(Mechanics mechanics) throws MechanicsException {
-		if(!mechanicsRepository.existsById(mechanics.getMechanics_id())) {
+		if(!mechanicsRepository.existsById(mechanics.getMechanicsId())) {
 			throw new MechanicsException("Mechanic Not Found");
 		}
 		else {
-			Mechanics OldMechanic=mechanicsRepository.findById(mechanics.getMechanics_id()).get();
-			if(mechanics.getMechanics_name()!=null) {
-				if(!mechanics.getMechanics_name().matches("[A-Za-z ]+")) {
+			Mechanics OldMechanic=mechanicsRepository.findById(mechanics.getMechanicsId()).get();
+			if(mechanics.getMechanicsName()!=null) {
+				if(!mechanics.getMechanicsName().matches("[A-Za-z ]+")) {
 					throw new MechanicsException("name is invalid");
 				}
-			OldMechanic.setMechanics_name(mechanics.getMechanics_name());
+			OldMechanic.setMechanicsName(mechanics.getMechanicsName());
 			}
-			if(mechanics.getMechanics_mobile()!=null) {
-				if(!mechanics.getMechanics_mobile().matches("[6-9][0-9]{9}")) {
+			if(mechanics.getMechanicsMobile()!=null) {
+				if(!mechanics.getMechanicsMobile().matches("[6-9][0-9]{9}")) {
 					throw new MechanicsException("mobile number is invalid");
 				}
-			OldMechanic.setMechanics_mobile(mechanics.getMechanics_mobile());
+			OldMechanic.setMechanicsMobile(mechanics.getMechanicsMobile());
 			}
-			if(mechanics.getMechanics_age()!=0){
-			if(mechanics.getMechanics_age()<18 && mechanics.getMechanics_age()>60) {
+			if(mechanics.getMechanicsAge()!=0){
+			if(mechanics.getMechanicsAge()<18 && mechanics.getMechanicsAge()>60) {
 				throw new MechanicsException("Age is not valid");
 			}
 			else {
-				OldMechanic.setMechanics_age(mechanics.getMechanics_age());
+				OldMechanic.setMechanicsAge(mechanics.getMechanicsAge());
 			}
 		}
 			mechanicsRepository.save(OldMechanic);
